@@ -1,0 +1,76 @@
+.form {
+  background-color: white;
+  position: absolute;
+  top: 200px;
+  right: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 6;
+}
+.google {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+label {
+  font-size: 12px;
+  margin-bottom: -7px;
+}
+.emailInp {
+  padding: 7px 120px 7px 5px;
+  border-radius: 4px;
+  outline: none;
+}
+.emailInp::placeholder {
+  font-size: 12px;
+}
+.LoginBtn {
+  padding: 10px 83px;
+  margin-top: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: 0.3s ease;
+  box-shadow: 0 0.3rem #1f1f1f;
+  cursor: pointer;
+}
+.LoginBtn:active {
+    box-shadow: 0 0.2rem #1f1f1f;
+    transform: translateY(0.2rem);
+  }
+.LoginBtn:hover {
+  opacity: 89%;
+}
+
+.googleBtn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 63px;
+  margin-top: 60px;
+  align-items: center;
+  background-color: black;
+  color: white;
+  border: none;
+  transition: 0.3s ease;
+  border-radius: 4px;
+  box-shadow: 0 0.3rem #1f1f1f;
+  cursor: pointer;
+}
+.googleBtn:active {
+  box-shadow: 0 0.2rem #1f1f1f;
+  transform: translateY(0.2rem);
+}
+.googleBtn:hover {
+  opacity: 89%;
+}
+.googleBtn img {
+  width: 20px;
+}
+.hidden{
+    display: none;
+}

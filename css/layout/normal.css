@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+
+* {
+  font-family: "Lexend", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #545663;
+  margin: 0;
+  padding: 0;
+}
+.hidden{
+    display: none;
+}
+.container {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 15px 0;
+}
+.overlay {
+  background-color: rgba(0, 0, 0, 0.363);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(2px);
+  z-index: 5;
+}
+.container_clock {
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(68, 68, 68, 0.822);
+}
+.left {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+}
+.left h4 {
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+}
+.logo img {
+  width: 20px;
+  margin-right: 5px;
+}
+.clock {
+  background-color: rgba(255, 255, 255, 0.164);
+  padding: 25px 20px 35px 20px;
+  border-radius: 10px;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.timeBtn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.pomodoro,
+.short,
+.long {
+  background-color: rgba(66, 66, 66, 0.336);
+  border: none;
+  padding: 5px 15px;
+  font-size: 18px;
+  color: white;
+  border-radius: 5px;
+}
+.clock h1 {
+  text-align: center;
+  font-size: 150px;
+  color: white;
+}
+.start {
+  background-color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 60px;
+  font-size: 38px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgb(129, 129, 129);
+  text-align: center;
+  box-shadow: 0 0.6rem #dfd9d9;
+  cursor: pointer;
+}
+.start:active {
+  box-shadow: 0 0.2rem #dfd9d9;
+  transform: translateY(0.2rem);
+}
+.right {
+  display: flex;
+  gap: 10px;
+}
+.report,
+.settings,
+.profile {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.164);
+  padding: 3px 5px;
+  border: none;
+  font-size: 12px;
+  border-radius: 3px;
+  color: white;
+  padding: 10px 15px;
+  align-items: center;
+  gap: 3px;
+  font-weight: 400;
+  img {
+    width: 15px;
+    font-size: 18px;
+    color: white;
+    font-weight: 100;
+  }
+}
+.dot {
+  background-color: rgba(255, 255, 255, 0.164);
+  border: none;
+  padding: 10px 9px;
+  align-items: center;
+  display: flex;
+  border-radius: 3px;
+  img {
+    width: 15px;
+    font-size: 18px;
+    color: white;
+    font-weight: 100;
+  }
+}

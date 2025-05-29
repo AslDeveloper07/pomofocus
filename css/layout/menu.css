@@ -1,0 +1,18 @@
+.menu_modal{
+    background-color: white;
+    position: absolute;
+    padding: 10px;
+    top: 54px;
+    right: 444px;
+    border-radius: 5px;
+    width: 150px;
+}
+.login,
+.premium,
+.shortcuts{
+    padding: 4px 0;
+}
+
+/* .hidden{
+    display: none;
+} */
