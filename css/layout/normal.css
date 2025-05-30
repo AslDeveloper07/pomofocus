@@ -10,6 +10,7 @@ body {
   background-color: #545663;
   margin: 0;
   padding: 0;
+
 }
 .hidden{
     display: none;
@@ -35,6 +36,11 @@ body {
   margin: 0 auto;
   padding: 10px 0;
 }
+
+
+
+
+
 
 .navbar {
   display: flex;

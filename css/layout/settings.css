@@ -12,6 +12,8 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   z-index: 10;
+
+  
 }
 .big_modal::-webkit-scrollbar {
   display: none;
