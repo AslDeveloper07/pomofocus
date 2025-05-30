@@ -75,6 +75,7 @@ body {
 .pomodoro,
 .short,
 .long {
+  cursor: pointer;
   background-color: rgba(66, 66, 66, 0.336);
   border: none;
   padding: 5px 15px;
@@ -123,6 +124,7 @@ body {
   align-items: center;
   gap: 3px;
   font-weight: 400;
+  cursor: pointer;
   img {
     width: 15px;
     font-size: 18px;
@@ -137,6 +139,7 @@ body {
   align-items: center;
   display: flex;
   border-radius: 3px;
+  cursor: pointer;
   img {
     width: 15px;
     font-size: 18px;

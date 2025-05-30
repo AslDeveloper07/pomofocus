@@ -100,171 +100,185 @@
 
 
 
-    <!-- Setting modal  -->
-    <div class="setting_modal">
-        <h2>Settings</h2>
+    <div class="big_modal hidden">
+        <!-- Setting modal  -->
+        <div class="setting_modal">
+            <h1>Settings</h1>
 
-        <div class="timer">
-            <h1> <i class="ri-time-line"></i> Timer</h1>
-            <h2>Time (minutes)</h2>
-            <div class="time_input">
-                <div class="input1">
-                    <label for="pomo_lab">Pomodoro</label>
-                <input type="number" id="pomo_lab">
+            <div class="timer">
+                <h2 style="text-align: start;"> <i class="ri-time-line"></i> Timer</h2>
+                <h3 style="text-align: start; padding: 0 0 6px 0;">Time (minutes)</h3>
+                <div class="time_input">
+                    <div class="input1">
+                        <label for="pomo_lab">Pomodoro</label>
+                        <input type="number" id="pomo_lab">
+                    </div>
+                    <div class="input2">
+                        <label for="short_lab">Short Break</label>
+                        <input type="number" id="short_lab">
+                    </div>
+                    <div class="input3">
+                        <label for=" long_lab">Long break</label>
+                        <input type="number" id="long_lab">
+                    </div>
                 </div>
-                <div class="input2">
-                    <label for="short_lab">Short Break</label>
-                <input type="number" id="short_lab">
+                <div class="start_break">
+                    <h3>Auto Start Breaks</h3>
+                    <!-- From Uiverse.io by Galahhad -->
+                    <label class="switch">
+                        <input checked="" type="checkbox">
+                        <div class="slider">
+                            <div class="circle">
+                                <svg class="cross" xml:space="preserve" style="enable-background:new 0 0 512 512"
+                                    viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g>
+                                        <path data-original="#000000" fill="currentColor"
+                                            d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
+                                        </path>
+                                    </g>
+                                </svg>
+                                <svg class="checkmark" xml:space="preserve" style="enable-background:new 0 0 512 512"
+                                    viewBox="0 0 24 24" y="0" x="0" height="10" width="10"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g>
+                                        <path class="" data-original="#000000" fill="currentColor"
+                                            d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </label>
                 </div>
-                <div class="input3">
-                    <label for=" long_lab">Long break</label>
-                <input type="number" id="long_lab">
+                <div class="startPomo">
+                    <h3>Auto Start Pomodoros</h3>
+                    <!-- From Uiverse.io by Galahhad -->
+                    <label class="switch">
+                        <input checked="" type="checkbox">
+                        <div class="slider">
+                            <div class="circle">
+                                <svg class="cross" xml:space="preserve" style="enable-background:new 0 0 512 512"
+                                    viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g>
+                                        <path data-original="#000000" fill="currentColor"
+                                            d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
+                                        </path>
+                                    </g>
+                                </svg>
+                                <svg class="checkmark" xml:space="preserve" style="enable-background:new 0 0 512 512"
+                                    viewBox="0 0 24 24" y="0" x="0" height="10" width="10"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g>
+                                        <path class="" data-original="#000000" fill="currentColor"
+                                            d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <div class="start_break"
+                    style="padding: 0 0 40px 0; border-bottom: 1px solid rgba(128, 128, 128, 0.199);">
+                    <h3>Long Break interval</h3>
+                    <input type="number" id="number">
                 </div>
             </div>
-            <div class="start_break">
-                <h3>Auto Start Breaks</h3>
-                <!-- From Uiverse.io by Galahhad -->
-                <label class="switch">
-                    <input checked="" type="checkbox">
-                    <div class="slider">
-                        <div class="circle">
-                            <svg class="cross" xml:space="preserve" style="enable-background:new 0 0 512 512"
-                                viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g>
-                                    <path data-original="#000000" fill="currentColor"
-                                        d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
-                                    </path>
-                                </g>
-                            </svg>
-                            <svg class="checkmark" xml:space="preserve" style="enable-background:new 0 0 512 512"
-                                viewBox="0 0 24 24" y="0" x="0" height="10" width="10"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g>
-                                    <path class="" data-original="#000000" fill="currentColor"
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
-                                    </path>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
-                </label>
-            </div>
-            <div class="startPomo">
-                <h3>Auto Start Pomodoros</h3>
-                <!-- From Uiverse.io by Galahhad -->
-                <label class="switch">
-                    <input checked="" type="checkbox">
-                    <div class="slider">
-                        <div class="circle">
-                            <svg class="cross" xml:space="preserve" style="enable-background:new 0 0 512 512"
-                                viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g>
-                                    <path data-original="#000000" fill="currentColor"
-                                        d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
-                                    </path>
-                                </g>
-                            </svg>
-                            <svg class="checkmark" xml:space="preserve" style="enable-background:new 0 0 512 512"
-                                viewBox="0 0 24 24" y="0" x="0" height="10" width="10"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g>
-                                    <path class="" data-original="#000000" fill="currentColor"
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
-                                    </path>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
-                </label>
-            </div>
-            <div class="start_break">
-                <h3>Long Break interval</h3>
-                <input type="number">
-            </div>
-        </div>
 
-        <div class="task">
-            <h1><i class="ri-checkbox-line"></i>Timer</h1>
-            <div class="start_break">
-                <h3>Auto Check Tasks <i class="ri-error-warning-fill"></i></h3>
-                <!-- From Uiverse.io by Galahhad -->
-                <label class="switch">
-                    <input checked="" type="checkbox">
-                    <div class="slider">
-                        <div class="circle">
-                            <svg class="cross" xml:space="preserve" style="enable-background:new 0 0 512 512"
-                                viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g>
-                                    <path data-original="#000000" fill="currentColor"
-                                        d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
-                                    </path>
-                                </g>
-                            </svg>
-                            <svg class="checkmark" xml:space="preserve" style="enable-background:new 0 0 512 512"
-                                viewBox="0 0 24 24" y="0" x="0" height="10" width="10"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g>
-                                    <path class="" data-original="#000000" fill="currentColor"
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
-                                    </path>
-                                </g>
-                            </svg>
+            <div class="task">
+                <h2 style="text-align: start; "> <i class="ri-checkbox-multiple-line"></i>Task</h2>
+                <div class="start_break">
+                    <h3>Auto Check Tasks <i class="ri-error-warning-fill"></i></h3>
+                    <!-- From Uiverse.io by Galahhad -->
+                    <label class="switch">
+                        <input checked="" type="checkbox">
+                        <div class="slider">
+                            <div class="circle">
+                                <svg class="cross" xml:space="preserve" style="enable-background:new 0 0 512 512"
+                                    viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g>
+                                        <path data-original="#000000" fill="currentColor"
+                                            d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
+                                        </path>
+                                    </g>
+                                </svg>
+                                <svg class="checkmark" xml:space="preserve" style="enable-background:new 0 0 512 512"
+                                    viewBox="0 0 24 24" y="0" x="0" height="10" width="10"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g>
+                                        <path class="" data-original="#000000" fill="currentColor"
+                                            d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
                         </div>
-                    </div>
-                </label>
-            </div>
-            <div class="startPomo">
-                <h3>Auto Switch Tasks <i class="ri-error-warning-fill"></i></h3>
-                <!-- From Uiverse.io by Galahhad -->
-                <label class="switch">
-                    <input checked="" type="checkbox">
-                    <div class="slider">
-                        <div class="circle">
-                            <svg class="cross" xml:space="preserve" style="enable-background:new 0 0 512 512"
-                                viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g>
-                                    <path data-original="#000000" fill="currentColor"
-                                        d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
-                                    </path>
-                                </g>
-                            </svg>
-                            <svg class="checkmark" xml:space="preserve" style="enable-background:new 0 0 512 512"
-                                viewBox="0 0 24 24" y="0" x="0" height="10" width="10"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g>
-                                    <path class="" data-original="#000000" fill="currentColor"
-                                        d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
-                                    </path>
-                                </g>
-                            </svg>
+                    </label>
+                </div>
+                <div class="startPomo"
+                    style=" padding: 10px 0 40px 0; border-bottom: 1px solid rgba(128, 128, 128, 0.199);">
+                    <h3>Auto Switch Tasks <i class="ri-error-warning-fill"></i></h3>
+                    <!-- From Uiverse.io by Galahhad -->
+                    <label class="switch">
+                        <input checked="" type="checkbox">
+                        <div class="slider">
+                            <div class="circle">
+                                <svg class="cross" xml:space="preserve" style="enable-background:new 0 0 512 512"
+                                    viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g>
+                                        <path data-original="#000000" fill="currentColor"
+                                            d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0">
+                                        </path>
+                                    </g>
+                                </svg>
+                                <svg class="checkmark" xml:space="preserve" style="enable-background:new 0 0 512 512"
+                                    viewBox="0 0 24 24" y="0" x="0" height="10" width="10"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g>
+                                        <path class="" data-original="#000000" fill="currentColor"
+                                            d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
                         </div>
-                    </div>
-                </label>
-            </div>
+                    </label>
+                </div>
 
 
+
+
+            </div>
 
             <div class="sound">
-                <h1><i class="ri-checkbox-line"></i>Sound</h1>
+                <h2 style="text-align: start;"><i class="ri-volume-up-fill"></i>Sound</h2>
                 <div class="all_sound">
                     <div class="text_sound">
-                        <h2>Alarm Sound</h2>
-                        <h2>Ticking Sound</h2>
+                        <h3 style="margin-left: -16px;">Alarm Sound</h3>
+                        <h3 style="position: relative; top: -35px;">Ticking Sound</h3>
                     </div>
                     <div class="pro_saund">
 
+                        <div class="dropdown">
+                            <button class="dropdown-toggle">Bell</button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                            </ul>
+                        </div>
                         <label class="slider">
                             <input type="range" class="level">
                             <svg class="volume" xmlns="http://www.w3.org/2000/svg" version="1.1"
@@ -281,8 +295,16 @@
                             </svg>
                         </label>
 
-                    
 
+
+                        <div class="dropdown" style="margin-top: 40px;">
+                            <button class="dropdown-toggle">Ticking show</button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                            </ul>
+                        </div>
                         <label class="slider">
                             <input type="range" class="level">
                             <svg class="volume" xmlns="http://www.w3.org/2000/svg" version="1.1"
@@ -304,9 +326,70 @@
                 </div>
             </div>
 
+            <div class="theme">
+                <h2 style="text-align: start;"> <i class="ri-paint-brush-fill"></i> Themes</h2>
+                <div class="tema">
+                    <h3>Color Themes</h3>
+                    <div class="colors">
+                        <div class="color1"></div>
+                    <div class="color2"></div>
+                    <div class="color3"></div>
+                    </div>
+                </div>
+                <div class="hour_format">
+                    <h3>Hour Format</h3>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle">24-hour</button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">24-hour</a></li>
+                            <li><a href="#">12-hour</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="dark">
+                    <h3>Dark Mode</h3>
+                    <label class="slider">
+                        <input type="range" class="level">
+                        <svg class="volume" xmlns="http://www.w3.org/2000/svg" version="1.1"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0"
+                            viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                            <g>
+                                <path
+                                    d="M18.36 19.36a1 1 0 0 1-.705-1.71C19.167 16.148 20 14.142 20 12s-.833-4.148-2.345-5.65a1 1 0 1 1 1.41-1.419C20.958 6.812 22 9.322 22 12s-1.042 5.188-2.935 7.069a.997.997 0 0 1-.705.291z"
+                                    fill="currentColor" data-original="#000000"></path>
+                                <path
+                                    d="M15.53 16.53a.999.999 0 0 1-.703-1.711C15.572 14.082 16 13.054 16 12s-.428-2.082-1.173-2.819a1 1 0 1 1 1.406-1.422A6 6 0 0 1 18 12a6 6 0 0 1-1.767 4.241.996.996 0 0 1-.703.289zM12 22a1 1 0 0 1-.707-.293L6.586 17H4c-1.103 0-2-.897-2-2V9c0-1.103.897-2 2-2h2.586l4.707-4.707A.998.998 0 0 1 13 3v18a1 1 0 0 1-1 1z"
+                                    fill="currentColor" data-original="#000000"></path>
+                            </g>
+                        </svg>
+                    </label>
+                </div>
+                <div class="window">
+                    <h3>Small Window</h3>
+                    <a href="https://pomofocus.io/app"><button id="small_window">Open <img src="	https://pomofocus.io/icons/external-link.svg" alt="forward"></button></a>
+                </div>
+            </div>
+
+
+            <div class="theme">
+                <h2 style="text-align: start;"><i class="ri-arrow-left-right-fill"></i>
+                    Integration</h2>
+
+                <div class="window" style="border: none; padding: 10px 0 10px 0;">
+                    <h3>Small Window <i class="ri-error-warning-fill"></i></h3>
+                    <button id="small_window">Connect <i class="ri-lock-2-fill"></i></button>
+                </div>
+                <div class="window">
+                    <h3>Small Window <i class="ri-error-warning-fill"></i></h3>
+                    <button id="small_window">Add <i class="ri-lock-2-fill"></i></button>
+                </div>
+            </div>
+
+            <div class="end">
+                <button class="apply">OK</button>
+            </div>
         </div>
-
-
     </div>
 </body>
 
