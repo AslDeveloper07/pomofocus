@@ -29,6 +29,7 @@ body {
   backdrop-filter: blur(2px);
   z-index: 5;
 }
+
 .container_clock {
   max-width: 550px;
   margin: 0 auto;

@@ -11,6 +11,7 @@
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  z-index: 10;
 }
 .big_modal::-webkit-scrollbar {
   display: none;
@@ -106,19 +107,19 @@
   align-items: center;
   gap: 15px;
 }
-.color1 {
+.red {
   width: 25px;
   height: 25px;
   background-color: #ba4949;
   border-radius: 4px;
 }
-.color2 {
+.purple {
   width: 25px;
   height: 25px;
   background-color: #7e53a3;
   border-radius: 4px;
 }
-.color3 {
+.blue {
   width: 25px;
   height: 25px;
   background-color: #38848a;
