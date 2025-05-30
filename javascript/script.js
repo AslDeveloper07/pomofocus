@@ -22,174 +22,6 @@
 // const minut = document.querySelector("#minut");
 // const Overlay = document.querySelector(".overlay");
 
-// // Timer o'zgaruvchilari
-// let totalSeconds = 0;
-// let timerInterval;
-// let isRunning = false;
-// let currentColor = 'red';
-
-// // Boshlang'ich sozlamalar
-// setPomo.value = 28;
-// shortPomo.value = 13;
-// longPomo.value = 10;
-// updateTimerDisplay(28, 0);
-
-// // Modal funksiyalari
-// const openSettingsModal = () => {
-//   settingsModal.classList.remove("hidden");
-//   Overlay.classList.remove("hidden");
-// };
-
-// const closeSettingsModal = () => {
-//   settingsModal.classList.add("hidden");
-//   Overlay.classList.add("hidden");
-// };
-
-// const openLoginModal = () => {
-//   LoginModal.classList.remove("hidden");
-//   Overlay.classList.remove("hidden");
-// };
-
-// const closeLoginModal = () => {
-//   LoginModal.classList.add("hidden");
-//   Overlay.classList.add("hidden");
-// };
-
-// const toggleMenuModal = () => {
-//   menuModal.classList.toggle("hidden");
-// };
-
-// // Ranglarni o'zgartirish
-// const changeColor = (color) => {
-//   currentColor = color;
-//   if (!isRunning || !darkTheme.checked) {
-//     document.body.style.backgroundColor = getColorCode(color);
-//   }
-// };
-
-// const getColorCode = (color) => {
-//   switch(color) {
-//     case 'red': return '#ff5c5c';
-//     case 'purple': return '#9c5cff';
-//     case 'blue': return '#5c9cff';
-//     default: return '#ff5c5c';
-//   }
-// };
-
-// // Timer funksiyalari
-// function startTimer() {
-//   const hours = parseInt(hour.textContent) || 0;
-//   const minutes = parseInt(minut.textContent) || 0;
-//   totalSeconds = hours * 3600 + minutes * 60;
-
-//   if (timerInterval) clearInterval(timerInterval);
-
-//   if (darkTheme.checked) {
-//     document.body.style.backgroundColor = "#121212";
-//   }
-
-//   startBtn.textContent = "Pause";
-//   isRunning = true;
-
-//   timerInterval = setInterval(() => {
-//     if (totalSeconds <= 0) {
-//       clearInterval(timerInterval);
-//       isRunning = false;
-//       startBtn.textContent = "Start";
-//       return;
-//     }
-
-//     totalSeconds--;
-//     const hoursLeft = Math.floor(totalSeconds / 3600);
-//     const minutesLeft = Math.floor((totalSeconds % 3600) / 60);
-//     const secondsLeft = totalSeconds % 60;
-
-//     hour.textContent = hoursLeft.toString().padStart(2, '0');
-//     minut.textContent = minutesLeft.toString().padStart(2, '0');
-//   }, 1000);
-// }
-
-// function stopTimer() {
-//   clearInterval(timerInterval);
-//   isRunning = false;
-//   startBtn.textContent = "Start";
-//   changeColor(currentColor);
-// }
-
-// function updateTimerDisplay(minutes, seconds) {
-//   hour.textContent = minutes.toString().padStart(2, '0');
-//   minut.textContent = seconds.toString().padStart(2, '0');
-// }
-
-// // Event listenerlar
-// red.addEventListener("click", () => changeColor('red'));
-// purple.addEventListener("click", () => changeColor('purple'));
-// blue.addEventListener("click", () => changeColor('blue'));
-
-// pomodoro.addEventListener("click", () => {
-//   changeColor('red');
-//   updateTimerDisplay(setPomo.value, 0);
-//   if (isRunning) stopTimer();
-// });
-
-// short.addEventListener("click", () => {
-//   changeColor('purple');
-//   updateTimerDisplay(shortPomo.value, 0);
-//   if (isRunning) stopTimer();
-// });
-
-// long.addEventListener("click", () => {
-//   changeColor('blue');
-//   updateTimerDisplay(longPomo.value, 0);
-//   if (isRunning) stopTimer();
-// });
-
-// startBtn.addEventListener("click", () => {
-//   if (isRunning) {
-//     stopTimer();
-//   } else {
-//     startTimer();
-//   }
-// });
-
-// applyBtn.addEventListener("click", () => {
-//   if (currentColor === 'red') {
-//     updateTimerDisplay(setPomo.value, 0);
-//   } else if (currentColor === 'purple') {
-//     updateTimerDisplay(shortPomo.value, 0);
-//   } else if (currentColor === 'blue') {
-//     updateTimerDisplay(longPomo.value, 0);
-//   }
-//   closeSettingsModal();
-// });
-
-// // Modal eventlari
-// showSettings.forEach((btn) => {
-//   btn.addEventListener("click", openSettingsModal);
-// });
-
-// ShowLogin.forEach((btn) => {
-//   btn.addEventListener("click", openLoginModal);
-// });
-
-// ShowMenu.forEach((btn) => {
-//   btn.addEventListener("click", toggleMenuModal);
-// });
-
-// Overlay.addEventListener("click", () => {
-//   closeSettingsModal();
-//   closeLoginModal();
-// });
-
-// document.addEventListener("keydown", (event) => {
-//   if (event.key === "Escape") {
-//     closeSettingsModal();
-//     closeLoginModal();
-//     menuModal.classList.add("hidden");
-//   }
-// });
-
-
 
 
 
@@ -235,24 +67,20 @@ updateTimerDisplay(28, 0);
 const openSettingsModal = () => {
   settingsModal.classList.remove("hidden");
   Overlay.classList.remove("hidden");
-
 };
 
 const closeSettingsModal = () => {
-
-  setTimeout(() => settingsModal.classList.add("hidden"), 200);
+  settingsModal.classList.add("hidden");
   Overlay.classList.add("hidden");
 };
 
 const openLoginModal = () => {
   LoginModal.classList.remove("hidden");
   Overlay.classList.remove("hidden");
-
 };
 
 const closeLoginModal = () => {
-
-  setTimeout(() => LoginModal.classList.add("hidden"), 200);
+  LoginModal.classList.add("hidden");
   Overlay.classList.add("hidden");
 };
 
@@ -278,12 +106,18 @@ const getColorCode = (color) => {
   }
 };
 
+// Active sinfni boshqarish
+function setActiveButton(activeBtn) {
+  [pomodoro, short, long].forEach(btn => btn.classList.remove("active"));
+  activeBtn.classList.add("active");
+}
+
 // Timer funksiyalari
 function startTimer() {
   if (!isPaused) {
-    const hours = parseInt(hour.textContent) || 0;
-    const minutes = parseInt(minut.textContent) || 0;
-    totalSeconds = hours * 3600 + minutes * 60;
+    const minutes = parseInt(hour.textContent) || 0;
+    const seconds = parseInt(minut.textContent) || 0;
+    totalSeconds = minutes * 60 + seconds;
   } else {
     totalSeconds = pausedSeconds;
     isPaused = false;
@@ -307,12 +141,11 @@ function startTimer() {
     }
 
     totalSeconds--;
-    const hoursLeft = Math.floor(totalSeconds / 3600);
-    const minutesLeft = Math.floor((totalSeconds % 3600) / 60);
+    const minutesLeft = Math.floor(totalSeconds / 60);
     const secondsLeft = totalSeconds % 60;
 
-    hour.textContent = hoursLeft.toString().padStart(2, '0');
-    minut.textContent = minutesLeft.toString().padStart(2, '0');
+    hour.textContent = minutesLeft.toString().padStart(2, '0');
+    minut.textContent = secondsLeft.toString().padStart(2, '0');
   }, 1000);
 }
 
@@ -352,6 +185,7 @@ pomodoro.addEventListener("click", () => {
   if (validateInputs()) {
     changeColor('red');
     updateTimerDisplay(parseInt(setPomo.value), 0);
+    setActiveButton(pomodoro);
     if (isRunning) stopTimer();
   }
 });
@@ -360,6 +194,7 @@ short.addEventListener("click", () => {
   if (validateInputs()) {
     changeColor('purple');
     updateTimerDisplay(parseInt(shortPomo.value), 0);
+    setActiveButton(short);
     if (isRunning) stopTimer();
   }
 });
@@ -368,25 +203,45 @@ long.addEventListener("click", () => {
   if (validateInputs()) {
     changeColor('blue');
     updateTimerDisplay(parseInt(longPomo.value), 0);
+    setActiveButton(long);
     if (isRunning) stopTimer();
   }
 });
 
 startBtn.addEventListener("click", () => {
+  const forwardEndIcon = document.querySelector(".ri-forward-end-fill");
+
+  if (!isRunning && !isPaused) {
+    if (!validateInputs()) return;
+
+    if (pomodoro.classList.contains("active")) {
+      updateTimerDisplay(parseInt(setPomo.value), 0);
+    } else if (short.classList.contains("active")) {
+      updateTimerDisplay(parseInt(shortPomo.value), 0);
+    } else if (long.classList.contains("active")) {
+      updateTimerDisplay(parseInt(longPomo.value), 0);
+    }
+  }
+
   if (isRunning) {
     stopTimer();
   } else {
     startTimer();
   }
+
+  if (forwardEndIcon) {
+    forwardEndIcon.classList.toggle("hidden");
+  }
 });
+
 
 applyBtn.addEventListener("click", () => {
   if (validateInputs()) {
-    if (currentColor === 'red') {
+    if (pomodoro.classList.contains("active")) {
       updateTimerDisplay(parseInt(setPomo.value), 0);
-    } else if (currentColor === 'purple') {
+    } else if (short.classList.contains("active")) {
       updateTimerDisplay(parseInt(shortPomo.value), 0);
-    } else if (currentColor === 'blue') {
+    } else if (long.classList.contains("active")) {
       updateTimerDisplay(parseInt(longPomo.value), 0);
     }
     closeSettingsModal();

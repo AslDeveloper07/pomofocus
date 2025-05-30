@@ -10,6 +10,8 @@
         integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href="https://fonts.cdnfonts.com/css/adam-2" rel="stylesheet">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -43,7 +45,7 @@
     <!-- Clock container  -->
     <div class="clock container_clock">
         <div class="timeBtn">
-            <button class="pomodoro">
+            <button class="pomodoro active">
                 Pomodoro
             </button>
             <button class="short">
@@ -56,9 +58,13 @@
         <h1>
             <span id="hour">32</span>:<span id="minut">78</span>
         </h1>
-        <button class="start">
-            start
-        </button>
+        <div class="btn_next">
+            <button class="start">
+                start
+            </button>
+            <i class="ri-forward-end-fill hidden"></i>
+
+        </div>
     </div>
 
     <!-- Menu modal -->
@@ -78,7 +84,7 @@
     </div>
 
     <!-- Login modal  -->
-    <div class="form hidden">
+    <div class="form hidden"  data-aos="zoom-in">
         <div class="google">
             <label for="emails">Emailingizni kiriting</label>
             <input class="emailInp" type="email" id="emails" placeholder="Example@gmail.com">
@@ -405,6 +411,10 @@
         </div>
     </div>
     <script src="./javascript/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
 </body>
 
 </html>

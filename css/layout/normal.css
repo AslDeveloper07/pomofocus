@@ -82,13 +82,16 @@ body {
 .pomodoro,
 .short,
 .long {
+  background-color: transparent;
   cursor: pointer;
-  background-color: rgba(66, 66, 66, 0.336);
   border: none;
   padding: 5px 15px;
   font-size: 18px;
   color: white;
   border-radius: 5px;
+}
+.active{
+  background-color: #0000003b;
 }
 .clock h1 {
   text-align: center;
