@@ -125,18 +125,21 @@
   height: 25px;
   background-color: #ba4949;
   border-radius: 4px;
+  cursor: pointer;
 }
 .purple {
   width: 25px;
   height: 25px;
   background-color: #7e53a3;
   border-radius: 4px;
+  cursor: pointer;
 }
 .blue {
   width: 25px;
   height: 25px;
   background-color: #38848a;
   border-radius: 4px;
+  cursor: pointer;
 }
 .hour_format{
   display: flex;
@@ -251,18 +254,16 @@ h3 {
 
 
 
-
-
-
-/* Asosiy button dizayni */
+/* Asosiy dropdown tuzilmasi */
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
+/* Tugma ko‘rinishi */
 .dropdown-toggle {
   background-color: #d1d1d1;
-  color: rgb(0, 0, 0);
+  color: #000;
   width: 150px;
   padding: 10px 25px;
   font-size: 16px;
@@ -274,28 +275,29 @@ h3 {
 .dropdown-toggle:hover {
   background-color: #b4b4b4;
 }
-.dropdown-menu li {
-  list-style: none; /* <--- Har bir li uchun ham alohida */
-}
 
-/* Menyu boshlanishda yashiringan bo‘ladi */
+/* Dropdown menyu */
 .dropdown-menu {
   display: none;
   position: absolute;
   background-color: white;
   min-width: 160px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 2000;
+  z-index: 1000;
   border-radius: 4px;
   padding: 0;
   margin-top: 5px;
 }
 
+.dropdown-menu li {
+  list-style: none;
+}
+
 .dropdown-menu a {
-  color: black;
+  display: block;
   padding: 10px 16px;
   text-decoration: none;
-  display: block;
+  color: black;
   transition: background 0.3s;
 }
 
@@ -303,8 +305,8 @@ h3 {
   background-color: #f1f1f1;
 }
 
-/* Hoverda menyuni ko‘rsatish */
-.dropdown:hover .dropdown-menu {
+/* Menyu ko‘rinishini faollashtirish uchun focus bilan */
+.dropdown:focus-within .dropdown-menu {
   display: block;
 }
 

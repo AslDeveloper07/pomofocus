@@ -1,30 +1,3 @@
-// // DOM elementlari
-// const showSettings = document.querySelectorAll(".settings");
-// const settingsModal = document.querySelector(".big_modal");
-// const ShowLogin = document.querySelectorAll(".profile");
-// const LoginModal = document.querySelector(".form");
-// const ShowMenu = document.querySelectorAll(".dot");
-// const menuModal = document.querySelector(".menu_modal");
-// const red = document.querySelector(".red");
-// const purple = document.querySelector(".purple");
-// const blue = document.querySelector(".blue");
-// const pomodoro = document.querySelector(".pomodoro");
-// const short = document.querySelector(".short");
-// const long = document.querySelector(".long");
-// const startBtn = document.querySelector(".start");
-// const applyBtn = document.querySelector(".apply");
-// const setPomo = document.getElementById("pomo_lab");
-// const shortPomo = document.getElementById("short_lab");
-// const longPomo = document.getElementById("long_lab");
-// const numberPomo = document.getElementById("number");
-// const darkTheme = document.getElementById("dark_mode");
-// const hour = document.querySelector("#hour");
-// const minut = document.querySelector("#minut");
-// const Overlay = document.querySelector(".overlay");
-
-
-
-
 // DOM elementlari
 const showSettings = document.querySelectorAll(".settings");
 const settingsModal = document.querySelector(".big_modal");
@@ -44,10 +17,14 @@ const setPomo = document.getElementById("pomo_lab");
 const shortPomo = document.getElementById("short_lab");
 const longPomo = document.getElementById("long_lab");
 const numberPomo = document.getElementById("number");
-const darkTheme = document.getElementById("dark_mode");
 const hour = document.querySelector("#hour");
 const minut = document.querySelector("#minut");
 const Overlay = document.querySelector(".overlay");
+const forwardEndIcon = document.querySelector(".ri-forward-end-fill");
+const darkTheme = document.querySelector("#dark_mode input[type='checkbox']");
+
+// 🔊 Ovoz fayli
+const clickSound = new Audio("sounds/click.mp3");
 
 // Timer o'zgaruvchilari
 let totalSeconds = 0;
@@ -56,39 +33,35 @@ let isRunning = false;
 let isPaused = false;
 let pausedSeconds = 0;
 let currentColor = 'red';
+let currentMode = 'pomodoro';
 
-// Boshlang'ich sozlamalar
 setPomo.value = "28";
 shortPomo.value = "13";
 longPomo.value = "10";
-updateTimerDisplay(28, 0);
+updateTimerDisplay(parseInt(setPomo.value), 0);
 
 // Modal funksiyalari
 const openSettingsModal = () => {
   settingsModal.classList.remove("hidden");
   Overlay.classList.remove("hidden");
 };
-
 const closeSettingsModal = () => {
   settingsModal.classList.add("hidden");
   Overlay.classList.add("hidden");
 };
-
 const openLoginModal = () => {
   LoginModal.classList.remove("hidden");
   Overlay.classList.remove("hidden");
 };
-
 const closeLoginModal = () => {
   LoginModal.classList.add("hidden");
   Overlay.classList.add("hidden");
 };
-
 const toggleMenuModal = () => {
   menuModal.classList.toggle("hidden");
 };
 
-// Ranglarni o'zgartirish
+// Rang o'zgartirish
 const changeColor = (color) => {
   currentColor = color;
   document.body.style.transition = "background-color 0.7s ease";
@@ -96,7 +69,6 @@ const changeColor = (color) => {
     document.body.style.backgroundColor = getColorCode(color);
   }
 };
-
 const getColorCode = (color) => {
   switch (color) {
     case 'red': return '#ff5c5c';
@@ -105,8 +77,6 @@ const getColorCode = (color) => {
     default: return '#ff5c5c';
   }
 };
-
-// Active sinfni boshqarish
 function setActiveButton(activeBtn) {
   [pomodoro, short, long].forEach(btn => btn.classList.remove("active"));
   activeBtn.classList.add("active");
@@ -115,9 +85,18 @@ function setActiveButton(activeBtn) {
 // Timer funksiyalari
 function startTimer() {
   if (!isPaused) {
-    const minutes = parseInt(hour.textContent) || 0;
-    const seconds = parseInt(minut.textContent) || 0;
-    totalSeconds = minutes * 60 + seconds;
+    if (darkTheme.checked) {
+      document.body.style.backgroundColor = "#000";
+    }
+    let minutes = 0;
+    if (currentMode === 'pomodoro') {
+      minutes = parseInt(setPomo.value);
+    } else if (currentMode === 'short') {
+      minutes = parseInt(shortPomo.value);
+    } else if (currentMode === 'long') {
+      minutes = parseInt(longPomo.value);
+    }
+    totalSeconds = minutes * 60;
   } else {
     totalSeconds = pausedSeconds;
     isPaused = false;
@@ -126,17 +105,19 @@ function startTimer() {
   if (timerInterval) clearInterval(timerInterval);
 
   if (darkTheme.checked) {
-    document.body.style.backgroundColor = "#121212";
+    document.body.style.backgroundColor = "#000";
   }
 
   startBtn.textContent = "Pause";
   isRunning = true;
+  toggleForwardIcon(true);
 
   timerInterval = setInterval(() => {
     if (totalSeconds <= 0) {
       clearInterval(timerInterval);
       isRunning = false;
       startBtn.textContent = "Start";
+      toggleForwardIcon(false);
       return;
     }
 
@@ -144,8 +125,7 @@ function startTimer() {
     const minutesLeft = Math.floor(totalSeconds / 60);
     const secondsLeft = totalSeconds % 60;
 
-    hour.textContent = minutesLeft.toString().padStart(2, '0');
-    minut.textContent = secondsLeft.toString().padStart(2, '0');
+    updateTimerDisplay(minutesLeft, secondsLeft);
   }, 1000);
 }
 
@@ -155,12 +135,19 @@ function stopTimer() {
   isRunning = false;
   isPaused = true;
   startBtn.textContent = "Start";
+  toggleForwardIcon(false);
   changeColor(currentColor);
+}
+
+function updatePageTitle(minutes, seconds) {
+  const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  document.title = `${timeStr} - Time for a break!`;
 }
 
 function updateTimerDisplay(minutes, seconds) {
   hour.textContent = minutes.toString().padStart(2, '0');
   minut.textContent = seconds.toString().padStart(2, '0');
+  updatePageTitle(minutes, seconds);
 }
 
 // Input validatsiyasi
@@ -168,57 +155,79 @@ function validateInputs() {
   const inputs = [setPomo, shortPomo, longPomo];
   for (const input of inputs) {
     const val = input.value.trim();
-    if (!/^\d{1,2}$/.test(val) || parseInt(val) > 59) {
-      alert("Bunday vaqt mavjud emas. Iltimos 2 xonali son kiriting (0–59 oralig'ida).");
+    if (!/^\d{1,2}$/.test(val) || parseInt(val) > 59 || parseInt(val) === 0) {
+      alert("Bunday vaqt mavjud emas. Iltimos 2 xonali son kiriting (1–59 oralig'ida).");
       return false;
     }
   }
   return true;
 }
 
-// Event listenerlar
-red.addEventListener("click", () => changeColor('red'));
-purple.addEventListener("click", () => changeColor('purple'));
-blue.addEventListener("click", () => changeColor('blue'));
+function toggleForwardIcon(show = true) {
+  if (forwardEndIcon) {
+    forwardEndIcon.classList.toggle("hidden", !show);
+  }
+}
 
+// Ranglar
+red.addEventListener("click", () => {
+  changeColor('red');
+  currentColor = 'red';
+});
+purple.addEventListener("click", () => {
+  changeColor('purple');
+  currentColor = 'purple';
+});
+blue.addEventListener("click", () => {
+  changeColor('blue');
+  currentColor = 'blue';
+});
+
+// Pomodoro turini tanlash
 pomodoro.addEventListener("click", () => {
   if (validateInputs()) {
+    currentMode = 'pomodoro';
     changeColor('red');
     updateTimerDisplay(parseInt(setPomo.value), 0);
     setActiveButton(pomodoro);
-    if (isRunning) stopTimer();
+    if (isRunning || isPaused) stopTimer();
   }
 });
-
 short.addEventListener("click", () => {
   if (validateInputs()) {
+    currentMode = 'short';
     changeColor('purple');
     updateTimerDisplay(parseInt(shortPomo.value), 0);
     setActiveButton(short);
-    if (isRunning) stopTimer();
+    if (isRunning || isPaused) stopTimer();
   }
 });
-
 long.addEventListener("click", () => {
   if (validateInputs()) {
+    currentMode = 'long';
     changeColor('blue');
     updateTimerDisplay(parseInt(longPomo.value), 0);
     setActiveButton(long);
-    if (isRunning) stopTimer();
+    if (isRunning || isPaused) stopTimer();
   }
 });
 
+// Start tugmasi bosilganda
 startBtn.addEventListener("click", () => {
-  const forwardEndIcon = document.querySelector(".ri-forward-end-fill");
+  const clickSound = new Audio("./resources/music/click.wav");
+
+  setTimeout(() => {
+    clickSound.currentTime = 0;
+    clickSound.play();
+  }, 100);
 
   if (!isRunning && !isPaused) {
     if (!validateInputs()) return;
-
-    if (pomodoro.classList.contains("active")) {
+    if (currentMode === 'pomodoro') {
       updateTimerDisplay(parseInt(setPomo.value), 0);
-    } else if (short.classList.contains("active")) {
+    } else if (currentMode === 'short') {
       updateTimerDisplay(parseInt(shortPomo.value), 0);
-    } else if (long.classList.contains("active")) {
+    } else if (currentMode === 'long') {
       updateTimerDisplay(parseInt(longPomo.value), 0);
     }
   }
@@ -228,38 +237,35 @@ startBtn.addEventListener("click", () => {
   } else {
     startTimer();
   }
-
-  if (forwardEndIcon) {
-    forwardEndIcon.classList.toggle("hidden");
-  }
 });
 
-
+// Apply tugmasi
 applyBtn.addEventListener("click", () => {
   if (validateInputs()) {
-    if (pomodoro.classList.contains("active")) {
+    if (currentMode === 'pomodoro') {
       updateTimerDisplay(parseInt(setPomo.value), 0);
-    } else if (short.classList.contains("active")) {
+    } else if (currentMode === 'short') {
       updateTimerDisplay(parseInt(shortPomo.value), 0);
-    } else if (long.classList.contains("active")) {
+    } else if (currentMode === 'long') {
       updateTimerDisplay(parseInt(longPomo.value), 0);
     }
     closeSettingsModal();
   }
 });
 
+// Enter bosilganda apply bosilsin
+[setPomo, shortPomo, longPomo].forEach(input => {
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      applyBtn.click();
+    }
+  });
+});
+
 // Modal eventlari
-showSettings.forEach((btn) => {
-  btn.addEventListener("click", openSettingsModal);
-});
-
-ShowLogin.forEach((btn) => {
-  btn.addEventListener("click", openLoginModal);
-});
-
-ShowMenu.forEach((btn) => {
-  btn.addEventListener("click", toggleMenuModal);
-});
+showSettings.forEach((btn) => btn.addEventListener("click", openSettingsModal));
+ShowLogin.forEach((btn) => btn.addEventListener("click", () => location.href = "sigin.html"));
+ShowMenu.forEach((btn) => btn.addEventListener("click", toggleMenuModal));
 
 Overlay.addEventListener("click", () => {
   closeSettingsModal();

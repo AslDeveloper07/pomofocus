@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn page</title>
+</head>
+<style>
+    body {
+        background-color: #ba4949;
+    }
+
+    .auth-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 2rem;
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+    }
+
+    .images {
+        width: 250px;
+        margin-top: 90px;
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        color: #374151;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .google-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0.75rem;
+        background: white;
+        border: 1px solid #D1D5DB;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        cursor: pointer;
+        margin-bottom: 1.5rem;
+        box-shadow: 0px 5px 7px -4px rgba(34, 60, 80, 0.45);
+
+    }
+
+    .google-btn img {
+        width: 20px;
+        margin-right: 10px;
+    }
+
+    .divider {
+        position: relative;
+        margin: 1.5rem 0;
+        color: #9CA3AF;
+    }
+
+    .divider:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: #E5E7EB;
+        z-index: -1;
+    }
+
+    .divider span {
+        background: rgb(255, 255, 255);
+        padding: 0 1rem;
+    }
+
+    .email-field {
+        margin-bottom: 1.5rem;
+    }
+
+    .email-field input {
+        width: 93%;
+        padding: 0.75rem;
+        border: 1px solid #D1D5DB;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        outline: none;
+    }
+
+    .cardes {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .primary-btn {
+        width: 100%;
+        padding: 0.75rem;
+        background: #383838;
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-bottom: 0.7rem;
+    }
+
+    .login-link {
+        margin-top: 30px;
+        color: #ffffff;
+    }
+
+    .login-link a {
+        color: #464646;
+        font-weight: 500;
+        text-decoration: none;
+    }
+</style>
+
+<body>
+    <div class="auth-container">
+        <img class="images" src="https://pomofocus.io/images/brandlogo-white.png" alt="logo">
+
+
+        <div class="cardes">
+            <div class="social-login">
+                <button class="google-btn">
+                    <img src="./resources/img/google (1).svg" alt="Google">
+                    Google orqali ro'yxatdan o'tish
+                </button>
+
+                <div class="divider">
+                    <span>yoki</span>
+                </div>
+            </div>
+
+            <div class="email-field">
+                <input type="email" placeholder="Example@gmail.com">
+            </div>
+
+            <button class="primary-btn">
+                Email orqali ro'yxatdan o'tish
+            </button>
+
+        </div>
+        <div class="login-link">
+            Hisobingiz bormi?
+            <a href="#">Kirish</a>
+        </div>
+    </div>
+</body>
+
+</html>
