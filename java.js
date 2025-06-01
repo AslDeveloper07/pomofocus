@@ -165,7 +165,16 @@ function validateInputs() {
         close: true,
         gravity: "top",
         position: "right",
-        backgroundColor: "#4caf50",
+        style:{
+          // backgroundColor: "red",
+          background: "linear-gradient(261deg,rgba(250, 5, 5, 0.51) 0%, rgba(247, 2, 2, 0.53) 100%)",
+          border: "1px solid rgba(255, 255, 255, 0.212)",
+          borderRadius: "8px",
+          backdropFilter: "blur(8px)",
+          color: "#fff",
+          padding: "10px 20px",
+
+        }
       }).showToast();
       return false;
     }
