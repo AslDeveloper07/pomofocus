@@ -26,7 +26,6 @@ const darkTheme = document.querySelector("#dark_mode input[type='checkbox']");
 // 🔊 Ovoz fayli
 const clickSound = new Audio("sounds/click.mp3");
 
-// Timer o'zgaruvchilari
 let totalSeconds = 0;
 let timerInterval;
 let isRunning = false;
@@ -40,7 +39,6 @@ shortPomo.value = "13";
 longPomo.value = "10";
 updateTimerDisplay(parseInt(setPomo.value), 0);
 
-// Modal funksiyalari
 const openSettingsModal = () => {
   settingsModal.classList.remove("hidden");
   Overlay.classList.remove("hidden");
@@ -49,7 +47,8 @@ const closeSettingsModal = () => {
   settingsModal.classList.add("hidden");
   Overlay.classList.add("hidden");
 };
-const openLoginModal = () => {
+
+const OpenLoginModal = () => {
   LoginModal.classList.remove("hidden");
   Overlay.classList.remove("hidden");
 };
@@ -61,14 +60,16 @@ const toggleMenuModal = () => {
   menuModal.classList.toggle("hidden");
 };
 
-// Rang o'zgartirish
+// ranglarni o'zgartirish
+
 const changeColor = (color) => {
   currentColor = color;
-  document.body.style.transition = "background-color 0.7s ease";
+  document.body.style = "background-color 0.7s ease";
   if (!isRunning || !darkTheme.checked) {
     document.body.style.backgroundColor = getColorCode(color);
   }
 };
+
 const getColorCode = (color) => {
   switch (color) {
     case "red":
@@ -78,15 +79,15 @@ const getColorCode = (color) => {
     case "blue":
       return "#5c9cff";
     default:
-      return "#ff5c5c";
+      return "#000";
   }
 };
+
 function setActiveButton(activeBtn) {
   [pomodoro, short, long].forEach((btn) => btn.classList.remove("active"));
   activeBtn.classList.add("active");
 }
 
-// Timer funksiyalari
 function startTimer() {
   if (!isPaused) {
     if (darkTheme.checked) {
@@ -96,25 +97,23 @@ function startTimer() {
     if (currentMode === "pomodoro") {
       minutes = parseInt(setPomo.value);
     } else if (currentMode === "short") {
-      minutes = parseInt(shortPomo.value);
+      minutes.parseInt(shortPomo.value);
     } else if (currentMode === "long") {
-      minutes = parseInt(longPomo.value);
+      minutes.parseInt(longPomo.value);
     }
-    totalSeconds = minutes * 60;
+    totalSeconds = minutes * 6;
   } else {
     totalSeconds = pausedSeconds;
     isPaused = false;
   }
 
   if (timerInterval) clearInterval(timerInterval);
-
   if (darkTheme.checked) {
     document.body.style.backgroundColor = "#000";
   }
-
   startBtn.textContent = "Pause";
   isRunning = true;
-  toggleForwardIcon(true);
+  toggleForwardIcon = true;
 
   timerInterval = setInterval(() => {
     if (totalSeconds <= 0) {
@@ -124,7 +123,6 @@ function startTimer() {
       toggleForwardIcon(false);
       return;
     }
-
     totalSeconds--;
     const minutesLeft = Math.floor(totalSeconds / 60);
     const secondsLeft = totalSeconds % 60;
@@ -147,7 +145,7 @@ function updatePageTitle(minutes, seconds) {
   const timeStr = `${minutes.toString().padStart(2, "0")}:${seconds
     .toString()
     .padStart(2, "0")}`;
-  document.title = `${timeStr} - Time for a break!`;
+  document.title = `${timeStr} - Pomofocus time`;
 }
 
 function updateTimerDisplay(minutes, seconds) {
@@ -156,17 +154,19 @@ function updateTimerDisplay(minutes, seconds) {
   updatePageTitle(minutes, seconds);
 }
 
-
-
-// Input validatsiyasi
 function validateInputs() {
   const inputs = [setPomo, shortPomo, longPomo];
   for (const input of inputs) {
     const val = input.value.trim();
     if (!/^\d{1,2}$/.test(val) || parseInt(val) > 59 || parseInt(val) === 0) {
-      alert(
-        "Bunday vaqt mavjud emas. Iltimos 2 xonali son kiriting (1–59 oralig'ida)."
-      );
+      Toastify({
+        text: "Eslatma: soat minut va second 60 ni tashkil qiladi iltimos 60 gacha bulgan son kiriting",
+        duration: 1000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#4caf50",
+      }).showToast();
       return false;
     }
   }
@@ -179,158 +179,156 @@ function toggleForwardIcon(show = true) {
   }
 }
 
-
-
-// Ranglar
+// Ranglarni tanlash
 red.addEventListener("click", () => {
   changeColor("red");
   currentColor = "red";
 });
+
 purple.addEventListener("click", () => {
   changeColor("purple");
   currentColor = "purple";
 });
+
 blue.addEventListener("click", () => {
   changeColor("blue");
   currentColor = "blue";
 });
 
-// Pomodoro turini tanlash
 pomodoro.addEventListener("click", () => {
   if (validateInputs()) {
     currentMode = "pomodoro";
-    changeColor("red");
+    changeColor = "red";
     updateTimerDisplay(parseInt(setPomo.value), 0);
     setActiveButton(pomodoro);
     if (isRunning || isPaused) stopTimer();
   }
 });
+
 short.addEventListener("click", () => {
   if (validateInputs()) {
     currentMode = "short";
-    changeColor("purple");
-    updateTimerDisplay(parseInt(shortPomo.value), 0);
-    setActiveButton(short);
-    if (isRunning || isPaused) stopTimer();
+    changeColor("purple")
+    updateTimerDisplay(parseInt(shortPomo.value),0)
+    setActiveButton(short)
+    if(isRunning||isPaused) stopTimer()
   }
 });
-long.addEventListener("click", () => {
-  if (validateInputs()) {
-    currentMode = "long";
-    changeColor("blue");
-    updateTimerDisplay(parseInt(longPomo.value), 0);
-    setActiveButton(long);
-    if (isRunning || isPaused) stopTimer();
-  }
-});
-
-
+  long.addEventListener('click',()=>{
+    if(validateInputs()){
+        currentMode="long"
+        changeColor("blue")
+        updateTimerDisplay(parseInt(longPomo.value),0)
+        setActiveButton(long)
+        if(isRunning||isPaused) stopTimer()
+    }
+  })
 
 
 // Start tugmasi bosilganda
 startBtn.addEventListener("click", () => {
-  const clickSound = new Audio("./resources/music/click.wav");
+    const clickSound = new Audio("./resources/music/click.wav");
 
-  setTimeout(() => {
-    clickSound.currentTime = 0;
-    clickSound.play();
-  }, 100);
+    setTimeout(() => {
+      clickSound.currentTime = 0;
+      clickSound.play();
+    }, 100);
 
-  if (!isRunning && !isPaused) {
-    if (!validateInputs()) return;
-    if (currentMode === "pomodoro") {
-      updateTimerDisplay(parseInt(setPomo.value), 0);
-    } else if (currentMode === "short") {
-      updateTimerDisplay(parseInt(shortPomo.value), 0);
-    } else if (currentMode === "long") {
-      updateTimerDisplay(parseInt(longPomo.value), 0);
+    if (!isRunning && !isPaused) {
+      if (!validateInputs()) return;
+      if (currentMode === "pomodoro") {
+        updateTimerDisplay(parseInt(setPomo.value), 0);
+      } else if (currentMode === "short") {
+        updateTimerDisplay(parseInt(shortPomo.value), 0);
+      } else if (currentMode === "long") {
+        updateTimerDisplay(parseInt(longPomo.value), 0);
+      }
     }
-  }
 
-  if (isRunning) {
-    stopTimer();
-  } else {
-    startTimer();
-  }
-});
-
-// Apply tugmasi
-applyBtn.addEventListener("click", () => {
-  if (validateInputs()) {
-    if (currentMode === "pomodoro") {
-      updateTimerDisplay(parseInt(setPomo.value), 0);
-    } else if (currentMode === "short") {
-      updateTimerDisplay(parseInt(shortPomo.value), 0);
-    } else if (currentMode === "long") {
-      updateTimerDisplay(parseInt(longPomo.value), 0);
-    }
-    closeSettingsModal();
-  }
-});
-
-// Enter bosilganda apply bosilsin
-[setPomo, shortPomo, longPomo].forEach((input) => {
-  input.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      applyBtn.click();
+    if (isRunning) {
+      stopTimer();
+    } else {
+      startTimer();
     }
   });
-});
 
-// Modal eventlari
-showSettings.forEach((btn) => btn.addEventListener("click", openSettingsModal));
-ShowLogin.forEach((btn) =>
-  btn.addEventListener("click", () => (location.href = "sigin.html"))
-);
-ShowMenu.forEach((btn) => btn.addEventListener("click", toggleMenuModal));
+  // Apply tugmasi
+  applyBtn.addEventListener("click", () => {
+    if (validateInputs()) {
+      if (currentMode === "pomodoro") {
+        updateTimerDisplay(parseInt(setPomo.value), 0);
+      } else if (currentMode === "short") {
+        updateTimerDisplay(parseInt(shortPomo.value), 0);
+      } else if (currentMode === "long") {
+        updateTimerDisplay(parseInt(longPomo.value), 0);
+      }
+      closeSettingsModal();
+    }
+  });
 
-Overlay.addEventListener("click", () => {
-  closeSettingsModal();
-  closeLoginModal();
-});
+  // Enter bosilganda apply bosilsin
+  [setPomo, shortPomo, longPomo].forEach((input) => {
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        applyBtn.click();
+      }
+    });
+  });
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
+  // Modal eventlari
+  showSettings.forEach((btn) => btn.addEventListener("click", openSettingsModal));
+  ShowLogin.forEach((btn) =>
+    btn.addEventListener("click", () => (location.href = "sigin.html"))
+  );
+  ShowMenu.forEach((btn) => btn.addEventListener("click", toggleMenuModal));
+
+  Overlay.addEventListener("click", () => {
     closeSettingsModal();
     closeLoginModal();
-    menuModal.classList.add("hidden");
-  }
-});
-forwardEndIcon.addEventListener("click", () => {
-  // Short tugmasini bosgandek qilamiz
-  short.click();
+  });
 
-  // Hozirgi hour va minut qiymatlarini olamiz
-  let startMinutes = parseInt(hour.textContent);
-  let startSeconds = parseInt(minut.textContent);
-
-  // Noto‘g‘ri qiymat bo‘lsa chiqib ketamiz
-  if (isNaN(startMinutes) || isNaN(startSeconds)) return;
-
-  // Umumiy soniyalarni hisoblaymiz
-  let totalSecondsLeft = startMinutes * 60 + startSeconds;
-
-  // 0 yoki manfiy bo‘lsa, hech narsa qilinmaydi
-  if (totalSecondsLeft <= 0) return;
-
-  // Sanashni boshlaymiz
-  const countdownInterval = setInterval(() => {
-    if (totalSecondsLeft <= 0) {
-      clearInterval(countdownInterval);
-      return;
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeSettingsModal();
+      closeLoginModal();
+      menuModal.classList.add("hidden");
     }
+  });
+  forwardEndIcon.addEventListener("click", () => {
+    // Short tugmasini bosgandek qilamiz
+    short.click();
 
-    totalSecondsLeft--;
+    // Hozirgi hour va minut qiymatlarini olamiz
+    let startMinutes = parseInt(hour.textContent);
+    let startSeconds = parseInt(minut.textContent);
 
-    // Yangilangan daqiqa va soniya
-    const newMinutes = Math.floor(totalSecondsLeft / 60);
-    const newSeconds = totalSecondsLeft % 60;
+    // Noto‘g‘ri qiymat bo‘lsa chiqib ketamiz
+    if (isNaN(startMinutes) || isNaN(startSeconds)) return;
 
-    // Ekranni yangilash
-    hour.textContent = newMinutes.toString().padStart(2, "0");
-    minut.textContent = newSeconds.toString().padStart(2, "0");
+    // Umumiy soniyalarni hisoblaymiz
+    let totalSecondsLeft = startMinutes * 60 + startSeconds;
 
-    // Sahifa title ham yangilanadi
-    updatePageTitle(newMinutes, newSeconds);
-  }, 1000);
-});
+    // 0 yoki manfiy bo‘lsa, hech narsa qilinmaydi
+    if (totalSecondsLeft <= 0) return;
+
+    // Sanashni boshlaymiz
+    const countdownInterval = setInterval(() => {
+      if (totalSecondsLeft <= 0) {
+        clearInterval(countdownInterval);
+        return;
+      }
+
+      totalSecondsLeft--;
+
+      // Yangilangan daqiqa va soniya
+      const newMinutes = Math.floor(totalSecondsLeft / 60);
+      const newSeconds = totalSecondsLeft % 60;
+
+      // Ekranni yangilash
+      hour.textContent = newMinutes.toString().padStart(2, "0");
+      minut.textContent = newSeconds.toString().padStart(2, "0");
+
+      // Sahifa title ham yangilanadi
+      updatePageTitle(newMinutes, newSeconds);
+    }, 1000);
+  });
