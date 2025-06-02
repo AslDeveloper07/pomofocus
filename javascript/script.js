@@ -40,6 +40,7 @@ shortPomo.value = "13";
 longPomo.value = "10";
 updateTimerDisplay(parseInt(setPomo.value), 0);
 
+
 // Modal funksiyalari
 const openSettingsModal = () => {
   settingsModal.classList.remove("hidden");
@@ -334,3 +335,23 @@ forwardEndIcon.addEventListener("click", () => {
     updatePageTitle(newMinutes, newSeconds);
   }, 1000);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
