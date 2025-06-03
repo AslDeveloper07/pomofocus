@@ -40,7 +40,6 @@ shortPomo.value = "13";
 longPomo.value = "10";
 updateTimerDisplay(parseInt(setPomo.value), 0);
 
-
 // Modal funksiyalari
 const openSettingsModal = () => {
   settingsModal.classList.remove("hidden");
@@ -157,8 +156,6 @@ function updateTimerDisplay(minutes, seconds) {
   updatePageTitle(minutes, seconds);
 }
 
-
-
 // Input validatsiyasi
 function validateInputs() {
   const inputs = [setPomo, shortPomo, longPomo];
@@ -179,8 +176,6 @@ function toggleForwardIcon(show = true) {
     forwardEndIcon.classList.toggle("hidden", !show);
   }
 }
-
-
 
 // Ranglar
 red.addEventListener("click", () => {
@@ -224,9 +219,6 @@ long.addEventListener("click", () => {
     if (isRunning || isPaused) stopTimer();
   }
 });
-
-
-
 
 // Start tugmasi bosilganda
 startBtn.addEventListener("click", () => {
@@ -335,23 +327,3 @@ forwardEndIcon.addEventListener("click", () => {
     updatePageTitle(newMinutes, newSeconds);
   }, 1000);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
